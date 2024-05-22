@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Your Cart</h1>
+<div class="cart-items">
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='images/' ~ item.product.image) }}" alt="{{ item.product.name }}" style="width: 50px; height: auto;"></td>
+                <td>{{ item.product.name }}</td>
+                <td>${{ item.product.price }}</td>
+                <td>
+                    <input type="number" id="quantity-{{ item.product.id }}" class="cart-quantity-input" data-product-id="{{ item.product.id }}" value="{{ item.quantity }}" min="1">
+                </td>
+                <td>${{ item.product.price * item.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<h2>Total Amount: ${{ total_amount }}</h2>
+<a href="{{ url_for('order.checkout') }}">Checkout</a>
+{% endblock %}

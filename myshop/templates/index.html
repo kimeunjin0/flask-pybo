@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome to MyShop</h1>
+<div class="product-list">
+    <div class="row">
+        {% for product in products %}
+            <div class="col-4 product-item">
+                 <!--p>Loop Index: {{ loop.index }} (Zero-based Index: {{ loop.index0 }})</p-->
+                <a href="{{ url_for('product.product_detail', product_id=product.id) }}">
+                    <img src="{{ url_for('static', filename='images/' ~ product.image) }}" alt="{{ product.name }}">
+                    <h2>{{ product.name }}</h2>
+                    <p>${{ product.price }}</p>
+                </a>
+            </div>
+            {% if loop.index % 3 == 0 and not loop.last %}
+                </div><div class="row">
+            {% endif %}
+        {% endfor %}
+        {% set remaining = 3 - (products|length % 3) %}
+        {% if remaining != 3 %}
+            {% for _ in range(remaining) %}
+                <div class="col-4 product-item" style="visibility: hidden;"></div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

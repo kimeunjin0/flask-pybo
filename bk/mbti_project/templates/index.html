@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI Selector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='icons/icon-192x192.png') }}">
+</head>
+<body>
+    <h1>Select Your MBTI Type</h1>
+    <form id="mbtiForm">
+        <label for="mbti">Choose your MBTI type:</label>
+        <select name="mbti" id="mbti" onchange="showImage()">
+            <option value="">--Select--</option>
+            <option value="ISTJ">ISTJ</option>
+            <option value="ISFJ">ISFJ</option>
+            <option value="INFJ">INFJ</option>
+            <option value="INTJ">INTJ</option>
+            <option value="ISTP">ISTP</option>
+            <option value="ISFP">ISFP</option>
+            <option value="INFP">INFP</option>
+            <option value="INTP">INTP</option>
+            <option value="ESTP">ESTP</option>
+            <option value="ESFP">ESFP</option>
+            <option value="ENFP">ENFP</option>
+            <option value="ENTP">ENTP</option>
+            <option value="ESTJ">ESTJ</option>
+            <option value="ESFJ">ESFJ</option>
+            <option value="ENFJ">ENFJ</option>
+            <option value="ENTJ">ENTJ</option>
+        </select>
+    </form>
+    <div>
+        <img id="mbtiImage" src="" alt="MBTI Image" style="display:none; max-width:100%; height:auto;">
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

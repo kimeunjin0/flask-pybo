@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Checkout</h1>
+<p>Your total amount is: ${{ total_amount }}</p>
+<p>Thank you for your purchase!</p>
+<a href="{{ url_for('main.index') }}">Continue Shopping</a>
+{% endblock %}
